@@ -1,5 +1,5 @@
 [package]
-name = "argon_cipher"
+name = "cipher_password"
 version = "0.1.0"
 authors = ["ZephOne <zephone@protonmail.com>"]
 edition = "2018"
