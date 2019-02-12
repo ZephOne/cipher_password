@@ -22,11 +22,21 @@ fn main() {
                 .help("The algorithm you want to use: sha1, sha512, bcrypt (default)")
                 .takes_value(true),
         )
+        .arg(
+            Arg::with_name("verbose")
+                .short("v")
+                .long("verbose")
+                .help("Print a more verbose output"),
+        )
         .get_matches();
 
-    let password = matches.value_of("pwd").unwrap_or("test");
-    let method = matches.value_of("algo").unwrap_or("bcrypt");
-    match method {
+    let algo = matches.value_of("algo").unwrap_or("bcrypt");
+    match matches.occurrences_of("verbose") {
+        1 => println!("Ciphering password using {}", algo),
+        _ => (),
+    }
+    let password = matches.value_of("pwd").unwrap_or("");
+    match algo {
         "sha1" => println!("{}", sha1_crypt::hash(password).unwrap()),
         "sha512" => println!("{}", sha512_crypt::hash(password).unwrap()),
         _ => println!("{}", bcrypt::hash(password).unwrap()),
