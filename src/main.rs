@@ -6,7 +6,7 @@ use pwhash::{bcrypt, sha1_crypt, sha512_crypt};
 
 fn main() {
     let matches = App::new("cipher_password")
-        .version("1.0")
+        .version("0.1")
         .author("ZephOne <zephone@protonmail.com>")
         .about("Cipher a password using bcrypt algorithm")
         .arg(
